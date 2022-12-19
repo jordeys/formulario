@@ -1,7 +1,8 @@
 <form (ngSubmit)="save($event)">
+  <table style="text-align: center; margin-left: 40%; margin-right: 10%; background-color: aquamarine;">
    <p>
-      Name: <br/>
-      <input type="text" formControlName="name">
+      Nombre: <br/>
+      <input type="text" formControlName="nombre" >
     </p>
     <p>
       contraseña: <br/>
@@ -21,4 +22,5 @@
       <input type="tel" formControlName="numero">
     </p>
     
-    <button type="submit" [disabled]="form.invalid">Guardar</button> 
+    <button (click)="navegacion()" type="submit" [disabled]="form.invalid">Guardar</button> 
+  </table>

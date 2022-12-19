@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, repeat } from 'rxjs/operators'; 
 
 
@@ -14,16 +15,16 @@ export class Componente1Component implements OnInit{
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
-  constructor() {
+  constructor(private router: Router) {
   }  
 
   ngOnInit(){
     
     this.form = this['formBuilder'].group({
-      name: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email, Validators.minLength(5),
       Validators.pattern(this.emailPattern)]],
-      password:  ['', [Validators.required]],
+      password:  ['', [Validators.required, Validators.minLength(6)]],
       confirmarPassword: ['', [Validators.required]],
       // Number: ['',[Validators.required]],
     });
@@ -46,5 +47,7 @@ export class Componente1Component implements OnInit{
     this.form.markAllAsTouched();
   }
  }
- 
+ navegacion(){
+  this.router.navigate(['web2'])
+  }
 }
